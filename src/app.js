@@ -10,6 +10,7 @@ const express = require("express");
 const cors = require("cors");
 const { model } = require("mongoose");
 
+
 //Creates the server application instance
 const app = express();
 
@@ -18,10 +19,13 @@ app.use(cors());
 //Allows server to read JSON data from request
 app.use(express.json());
 
+console.log("Routes Loaded");
 //first api route
 app.get("/",(req,res)=>{
     res.send("Devlog API Runnning");
 });
+
+app.use("/health",require("./routes/health"));
 
 
 //we are exporting the server instance
